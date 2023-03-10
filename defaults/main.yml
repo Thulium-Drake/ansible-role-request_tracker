@@ -6,11 +6,24 @@ rt_organization: 'example.com'
 # Setup repos or do that manually
 rt_setup_repos: true
 
-# RT5 webserver config
+# Webserver config
 rt_host_name: "{{ ansible_facts['fqdn'] }}"
 rt_host_port: 443
+rt_verify_ssl: false
 
-# RT5 database credentials
+# Timezone
+rt_timezone: 'Europe/Amsterdam'
+
+# Mail settings
+rt_from_address: "rt@{{ rt_organization }}"
+rt_friendly_from: true  # Show the name of the RT user sending the email instead of only the address
+
+rt_setup_fetchmail: false
+rt_fetchmail_host: "mail.{{ rt_organization }}"
+rt_fetchmail_user: "{{ rt_from_address }}"
+rt_fetchmail_password: 'ticket2mail'
+
+# Database credentials
 rt_database_host: 'localhost'
 rt_database_port: '3306'
 rt_database_name: 'rt5'

@@ -7,6 +7,12 @@ It requires:
 - A MySQL database server already set up
 - Internet access (Github, CPAN and distro repos)
 
+If you want to handle e-mail:
+
+- A local MTA configured to deliver e-mail via a smarthost or otherwise
+- Either the system itself should be able to receive mail, or you enable ```rt_setup_fetchmail```
+  which will install fetchmail and configure to run every few minutes
+
 This role has a soft dependency on using https://github.com/Thulium-Drake/ansible-role-apache_revproxy to provide the webserver. Add the following configuration to your host_vars:
 
 ```

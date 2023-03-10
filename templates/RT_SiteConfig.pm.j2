@@ -23,6 +23,14 @@ Set($DatabasePort, '{{ rt_database_port }}');
 Set($DatabaseName, '{{ rt_database_name }}');
 Set($DatabaseAdmin, '{{ rt_database_admin }}');
 
+# Timezone
+Set($Timezone, "{{ rt_timezone }}");
+
+# Mail settings
+Set($CorrespondAddress, '{{ rt_from_correspondence }}');
+Set($CommentAddress, '{{ rt_from_comment }}');
+Set($UseFriendlyFromLine, {{ (rt_friendly_from) | ternary('1','0') }});
+
 Set( %FullTextSearch,
    Enable     => 1,
    Indexed    => 1,
