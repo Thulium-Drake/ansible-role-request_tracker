@@ -1,0 +1,25 @@
+---
+# Version and organization name
+rt_version: '5.0.3'
+rt_organization: 'example.com'
+
+# Setup repos or do that manually
+rt_setup_repos: true
+
+# RT5 webserver config
+rt_host_name: "{{ ansible_facts['fqdn'] }}"
+rt_host_port: 443
+
+# RT5 database credentials
+rt_database_host: 'localhost'
+rt_database_port: '3306'
+rt_database_name: 'rt5'
+rt_database_user: 'rt5'
+rt_database_password: 'everyonegetsaticket!'
+rt_database_admin: 'root'
+rt_database_admin_password: "{{ mysql_root_password }}"
+
+# If you need to manually set up the RT database, enable this bool.
+# It will then skip the tasks for setting up the database, which allows
+# e.g. manual database upgrades.
+rt_manual_database_setup: false
