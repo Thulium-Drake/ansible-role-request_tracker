@@ -1,5 +1,5 @@
 ---
-rt_apache_group: 'www-data'
+rt_apache_user: 'www-data'
 rt_package_dependencies:
   - 'autoconf'
   - 'build-essential'

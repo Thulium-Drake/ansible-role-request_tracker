@@ -1,5 +1,5 @@
 ---
-rt_apache_group: 'apache'
+rt_apache_user: 'apache'
 rt_package_dependencies:
   - 'autoconf'
   - 'expat-devel'

@@ -9,7 +9,7 @@ rt_setup_repos: true
 # Webserver config
 rt_host_name: "{{ ansible_facts['fqdn'] }}"
 rt_host_port: 443
-rt_verify_ssl: false
+rt_verify_ssl: true
 
 # Timezone
 rt_timezone: 'Europe/Amsterdam'

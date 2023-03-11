@@ -76,8 +76,8 @@
   ansible.builtin.template:
     src: 'RT_SiteConfig.pm.j2'
     dest: '/opt/rt5/etc/RT_SiteConfig.pm'
-    owner: 'root'
-    group: "{{ rt_apache_group }}"
+    owner: "{{ rt_apache_user }}"
+    group: "{{ rt_apache_user }}"
     mode: '0660'
     validate: 'perl -c %s'
   no_log: false
@@ -99,6 +99,26 @@
   args:
     creates: '/opt/rt5/ansible_db_init_done'
   no_log: true
+
+- name: 'Set up fetchmail'
+  when: rt_setup_fetchmail
+  block:
+    - name: 'Ensure fetchmail'
+      ansible.builtin.package:
+        name: 'fetchmail'
+        state: 'present'
+    - name: 'Ensure fetchmailrc'
+      ansible.builtin.template:
+        src: 'fetchmailrc.j2'
+        dest: '/opt/rt5/etc/fetchmailrc'
+        owner: "{{ rt_apache_user }}"
+        group: "{{ rt_apache_user }}"
+        mode: '0600'
+    - name: 'Ensure cronjob to retrieve mail'
+      ansible.builtin.cron:
+        name: 'RT - fetchmail'
+        job: '/usr/bin/fetchmail -f /opt/rt5/etc/fetchmailrc'
+        user: "{{ rt_apache_user }}"
 
 - name: 'Restore SELinux contexts'
   ansible.builtin.command: restorcon -ir /opt/rt5
