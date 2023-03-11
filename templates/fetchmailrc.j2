@@ -1,0 +1,3 @@
+# {{ ansible_managed }}
+poll {{ rt_fetchmail_host }}    proto auto:
+ username {{ rt_fetchmail_user }} password {{ rt_fetchmail_password }} mda "/opt/rt5/bin/rt-mailgate --url https://{{ rt_host_name }} --queue General --action correspond {% if not rt_verify_ssl %}--no-verify-ssl{% endif %}"
