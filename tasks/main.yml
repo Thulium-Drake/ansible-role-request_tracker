@@ -107,6 +107,7 @@
       ansible.builtin.package:
         name: 'fetchmail'
         state: 'present'
+
     - name: 'Ensure fetchmailrc'
       ansible.builtin.template:
         src: 'fetchmailrc.j2'
@@ -114,6 +115,15 @@
         owner: "{{ rt_apache_user }}"
         group: "{{ rt_apache_user }}"
         mode: '0600'
+
+    - name: 'Ensure logfile'
+      ansible.builtin.file:
+        path: '/var/log/rt5_fetchmail.log'
+        state: 'touch'
+        owner: "{{ rt_apache_user }}"
+        group: "{{ rt_apache_user }}"
+        mode: '0660'
+
     - name: 'Ensure cronjob to retrieve mail'
       ansible.builtin.cron:
         name: 'RT - fetchmail'

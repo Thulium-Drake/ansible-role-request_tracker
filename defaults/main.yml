@@ -22,6 +22,7 @@ rt_setup_fetchmail: false
 rt_fetchmail_host: "mail.{{ rt_organization }}"
 rt_fetchmail_user: "{{ rt_from_address }}"
 rt_fetchmail_password: 'ticket2mail'
+rt_fetchmail_queue: 'General'
 
 # Database credentials
 rt_database_host: 'localhost'
