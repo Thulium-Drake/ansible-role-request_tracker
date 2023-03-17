@@ -1,4 +1,5 @@
 ---
+rt_apache_service: 'httpd'
 rt_apache_user: 'apache'
 rt_package_dependencies:
   - 'autoconf'

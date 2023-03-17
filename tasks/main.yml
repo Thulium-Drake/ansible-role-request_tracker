@@ -80,6 +80,7 @@
     group: "{{ rt_apache_user }}"
     mode: '0660'
     validate: 'perl -c %s'
+  notify: 'restart apache'
   no_log: false
 
 - name: 'Ensure database semaphore file for manual DB setup'

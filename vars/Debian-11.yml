@@ -1,4 +1,5 @@
 ---
+rt_apache_service: 'apache2'
 rt_apache_user: 'www-data'
 rt_package_dependencies:
   - 'autoconf'
