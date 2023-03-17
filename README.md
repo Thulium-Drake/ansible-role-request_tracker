@@ -3,7 +3,7 @@ This role provides a means to install BestPractical Request tracker on your syst
 
 It requires:
 
-- Debian 11 with backports enaled or RHEL(-like) 9
+- Debian 11 with backports enabled or RHEL(-like) 9, the author recommends Debian as more dependencies are packaged
 - A MySQL database server already set up
 - Internet access (Github, CPAN and distro repos)
 
