@@ -35,4 +35,6 @@ Set($Timezone, "{{ rt_timezone }}");
 Set($CorrespondAddress, '{{ rt_from_address }}');
 Set($UseFriendlyFromLine, {{ (rt_friendly_from) | ternary('1','0') }});
 
+{{ rt_extra_config }}
+
 1;

@@ -37,3 +37,7 @@ rt_database_admin_password: "{{ mysql_root_password }}"
 # It will then skip the tasks for setting up the database, which allows
 # e.g. manual database upgrades.
 rt_manual_database_setup: false
+
+# Extra configuration to place in RT_SiteConfig.pm.
+# e.g. SLA config https://fossies.org/linux/rt/docs/customizing/sla.pod
+rt_extra_config: ''
