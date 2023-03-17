@@ -130,6 +130,14 @@
         job: '/usr/bin/fetchmail -f /opt/rt5/etc/fetchmailrc'
         user: "{{ rt_apache_user }}"
 
+- name: 'Ensure RT-Shredder directory'
+  ansible.builtin.file:
+    path: '/opt/rt5/var/data/RT-Shredder'
+    state: 'directory'
+    owner: "{{ rt_apache_user }}"
+    group: "{{ rt_apache_user }}"
+    mode: '0770'
+
 - name: 'Restore SELinux contexts'
   ansible.builtin.command: restorcon -ir /opt/rt5
   changed_when: true
