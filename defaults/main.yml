@@ -19,6 +19,7 @@ rt_friendly_from: true  # Show the name of the RT user sending the email instead
 
 rt_setup_fetchmail: false
 rt_fetchmail_host: "mail.{{ rt_organization }}"
+rt_fetchmail_ssl: true
 rt_fetchmail_user: "{{ rt_from_address }}"
 rt_fetchmail_folder: ''
 rt_fetchmail_password: 'ticket2mail'
