@@ -9,7 +9,6 @@ rt_setup_repos: true
 # Webserver config
 rt_host_name: "{{ ansible_facts['fqdn'] }}"
 rt_host_port: 443
-rt_verify_ssl: true
 
 # Timezone
 rt_timezone: 'Europe/Amsterdam'
@@ -21,8 +20,12 @@ rt_friendly_from: true  # Show the name of the RT user sending the email instead
 rt_setup_fetchmail: false
 rt_fetchmail_host: "mail.{{ rt_organization }}"
 rt_fetchmail_user: "{{ rt_from_address }}"
+rt_fetchmail_folder: ''
 rt_fetchmail_password: 'ticket2mail'
 rt_fetchmail_queue: 'General'
+rt_fetchmail_rt_url: 'http://localhost'
+rt_fetchmail_verify_ssl: true
+
 
 # Database credentials
 rt_database_host: 'localhost'
