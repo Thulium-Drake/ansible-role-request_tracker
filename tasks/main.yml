@@ -4,6 +4,9 @@
   no_log: true
 
 - name: 'RHEL-like specific tasks'
+  when:
+    - ansible_facts['os_family'] == 'RedHat'
+    - rt_setup_repos
   block:
     - name: 'Enable RedHat CodeReady Builder repo'
       community.general.rhsm_repository:
@@ -16,9 +19,6 @@
         name: "https://dl.fedoraproject.org/pub/epel/epel-release-latest-{{ ansible_facts['distribution_major_version'] }}.noarch.rpm"
         state: 'present'
         disable_gpg_check: true
-  when:
-    - ansible_facts['os_family'] == 'RedHat'
-    - rt_setup_repos
 
 - name: 'Ensure dependencies'
   ansible.builtin.package:
@@ -80,7 +80,7 @@
     group: "{{ rt_apache_user }}"
     mode: '0660'
     validate: 'perl -c %s'
-  notify: 'restart apache'
+  notify: 'Restart apache'
   no_log: false
 
 - name: 'Ensure database semaphore file for manual DB setup'
