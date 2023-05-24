@@ -131,6 +131,7 @@
         job: '/usr/bin/fetchmail -f /opt/rt5/etc/fetchmailrc'
         user: "{{ rt_apache_user }}"
 
+
 - name: 'Ensure RT-Shredder directory'
   ansible.builtin.file:
     path: '/opt/rt5/var/data/RT-Shredder'
@@ -138,6 +139,13 @@
     owner: "{{ rt_apache_user }}"
     group: "{{ rt_apache_user }}"
     mode: '0770'
+
+- name: 'Ensure cronjob to shred deleted tickets'
+  ansible.builtin.cron:
+    name: 'RT - Shredder'
+    job: /opt/rt5/sbin/rt-shredder --plugin 'Tickets=query, Status="deleted"'
+    user: "{{ rt_apache_user }}"
+  when: rt_autoshred_deleted_tickets
 
 - name: 'Restore SELinux contexts'
   ansible.builtin.command: restorcon -ir /opt/rt5

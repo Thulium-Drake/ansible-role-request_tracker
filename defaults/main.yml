@@ -27,7 +27,6 @@ rt_fetchmail_queue: 'General'
 rt_fetchmail_rt_url: 'http://localhost'
 rt_fetchmail_verify_ssl: true
 
-
 # Database credentials
 rt_database_host: 'localhost'
 rt_database_port: '3306'
@@ -36,6 +35,12 @@ rt_database_user: 'rt5'
 rt_database_password: 'everyonegetsaticket!'
 rt_database_admin: 'root'
 rt_database_admin_password: "{{ mysql_root_password }}"
+
+# Shredder configuration
+# By default, deleting tickets will not remove them from the database
+# only from indexes and search results. If you want to destroy these tickets
+# permanently, set the below to true
+rt_autoshred_deleted_tickets: false
 
 # If you need to manually set up the RT database, enable this bool.
 # It will then skip the tasks for setting up the database, which allows
