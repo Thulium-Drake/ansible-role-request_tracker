@@ -143,7 +143,7 @@
 - name: 'Ensure cronjob to shred deleted tickets'
   ansible.builtin.cron:
     name: 'RT - Shredder'
-    job: /opt/rt5/sbin/rt-shredder --plugin 'Tickets=query, Status="deleted" --force'
+    job: /opt/rt5/sbin/rt-shredder --plugin 'Tickets=query, Status="deleted"' --force
     user: "{{ rt_apache_user }}"
   when: rt_autoshred_deleted_tickets
 
